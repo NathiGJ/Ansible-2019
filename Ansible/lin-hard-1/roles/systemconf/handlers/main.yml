@@ -1,0 +1,11 @@
+
+- name: restart nrpe
+  systemd: 
+    name: nrpe.service
+    state: restarted
+
+- name: restart ntpd
+  systemd: 
+    name: ntpd.service
+    state: restarted
+  

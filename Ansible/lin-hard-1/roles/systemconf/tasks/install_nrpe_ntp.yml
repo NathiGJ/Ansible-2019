@@ -1,0 +1,16 @@
+---
+
+- name: install nrpe-plugin
+  yum:
+    name: nrpe
+    state: installed
+  tags: 
+     - nrpe_plugin
+
+- name: install ntp
+  yum:
+   name: ntp
+   state: latest
+  tags:
+     - yum_ntp
+

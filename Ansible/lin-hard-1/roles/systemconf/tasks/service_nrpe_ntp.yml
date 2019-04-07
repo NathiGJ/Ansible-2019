@@ -1,0 +1,14 @@
+---
+
+- name: Start and enable nrpe service
+  systemd:
+    name: nrpe.service
+    state: restarted
+    enabled: yes
+
+- name: Start and enable ntpd service
+  systemd:
+    name: ntpd.service
+    state: started
+    enabled: yes
+

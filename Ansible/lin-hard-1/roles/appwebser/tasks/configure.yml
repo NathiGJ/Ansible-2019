@@ -1,0 +1,12 @@
+---
+- name: copying firewalld.conf file
+  copy: 
+   src: firewalld.conf
+   dest: /etc/firewalld/firewalld.conf
+   backup: yes
+  notify:
+     - reload firewall
+     - restart firewall
+  tags:
+     - firewall_config
+    

@@ -1,0 +1,31 @@
+---
+- name: Create group
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - devusers
+    - scmusers
+    - appusers
+
+- name: Create dev  users
+  user: 
+    name: "{{ item }}"
+    state: present
+    groups: "appusers,devusers"
+    append: yes
+    shell: /bin/sh
+    comment: testing-devusers
+  with_items:
+    - devuser-1
+    - devuser-2
+    - devuser-3
+   
+- name: Creating hash password for users
+  user:
+    name: devuser-1
+    password: "{{passwords}}" 
+    
+
+- name: Force user to change the password
+  shell: chage -d 0 devuser-1

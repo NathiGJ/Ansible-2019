@@ -1,0 +1,11 @@
+---
+
+- name: Start and enable firewalld
+  systemd:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+
+- name: Reload firewall rules
+  shell: firewall-cmd --reload
+  
