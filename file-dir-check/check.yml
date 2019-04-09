@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  connection: ssh
+  gather_facts: yes
+  user: ansi-adm
+  become: yes
+  become_user: root
+  tasks:
+  roles:
+    - fi-di-chk 
