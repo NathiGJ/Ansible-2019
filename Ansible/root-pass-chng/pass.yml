@@ -52,7 +52,7 @@
       yum:
         name: python2-pip
         state: latest
-      when: pip_pkge.stdout  == "python2-pip_no_installed" and ansible_distribution == 'RedHat'
+      when: pip_pkge.stdout  == "python2-pip_not_installed" and ansible_distribution == 'RedHat'
 
     - name: Again ensure the python2-pip pkge is installed or nor
       shell: if rpm -qa | grep  python2-pip| grep -v grep > /dev/null; then echo "pyhon2-pip_avail"; else echo "python2-pip_not_avail"; fi
