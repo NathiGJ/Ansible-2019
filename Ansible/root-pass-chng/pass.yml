@@ -61,7 +61,7 @@
     - debug: 
         msg: Status of installed pip is "{{ pip_avail.stdout }}"
        
-    - name: Generating Unix password for each host with 15 characters. Continue this process only if pkge is already installed
+    - name: Generating Unix password for each host with 16 characters. Continue this process only if pkge is already installed
       shell: pwgen -s -1 -y 16 
       register: uniq_root_pass
       when: rpm_status_changed.stdout  == "new_package_installed"
