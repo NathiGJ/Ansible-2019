@@ -20,7 +20,7 @@
       get_url:
         url: https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pwgen-2.08-1.el7.x86_64.rpm
         dest: /tmp/
-      when: rpm_pkg_check.stdout  == "package_not_installed" and ansible_distribution == 'RedHat'
+      when: rpm_pkg_check.stdout  == "package_not_installed"
  
     - name: Ensure package is downloaded
       shell: if  ls -l /tmp/ | grep -i pwgen | awk '{print $9}'| grep -v grep  > /dev/null; then echo "pkg_avail"; else echo "pkg_not_avail"; fi
@@ -33,8 +33,8 @@
       yum:
         name: /tmp/pwgen-2.08-1.el7.x86_64.rpm
         state: present
-      when: pkg_chk.stdout  == "pkg_avail" and ansible_distribution == 'RedHat'
-
+      when: pkg_chk.stdout  == "pkg_avail"
+      
     - name: Again ensuring pwgen is installed or not
       shell: if rpm -qa | grep pwgen | grep -v grep > /dev/null; then echo "new_package_installed"; else echo "new_package_not_installed"; fi 
       register: rpm_status_changed
@@ -52,7 +52,7 @@
       yum:
         name: python2-pip
         state: latest
-      when: pip_pkge.stdout  == "python2-pip_not_installed" and ansible_distribution == 'RedHat'
+      when: pip_pkge.stdout  == "python2-pip_not_installed"
 
     - name: Again ensure the python2-pip pkge is installed or nor
       shell: if rpm -qa | grep  python2-pip| grep -v grep > /dev/null; then echo "pyhon2-pip_avail"; else echo "python2-pip_not_avail"; fi
@@ -62,7 +62,7 @@
         msg: Status of installed pip is "{{ pip_avail.stdout }}"
        
     - name: Generating Unix password for each host with 16 characters. Continue this process only if pkge is already installed
-      shell: pwgen -s -1 -y 16 
+      shell: pwgen 16 -s -y -1 
       register: uniq_root_pass
       when: rpm_status_changed.stdout  == "new_package_installed"
     - debug: 
