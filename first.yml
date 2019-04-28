@@ -1,0 +1,19 @@
+---
+- hosts: vmware
+  connection: ssh
+  gather_facts: yes
+  remote_user: ansi-admin
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Creating user on all operating systems
+      user:
+       name: "{{ names }}"
+       state: present
+
+    - name: copy a file to only to rhel6 server
+      template:
+           src: test
+           dest: /tmp/
+      when: ansible_distribution_version == "6.9"
