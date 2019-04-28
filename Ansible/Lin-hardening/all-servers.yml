@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+ 
+- name: user management
+  hosts: all
+  user: ansi-adm
+  become: yes
+  become_user: root
+  connection: ssh
+  gather_facts: yes
+  tasks: 
+  roles: 
+    - all-ser

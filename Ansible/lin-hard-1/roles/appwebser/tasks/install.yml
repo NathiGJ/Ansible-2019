@@ -1,0 +1,10 @@
+---
+
+- name: installing firewalld packages
+  yum: 
+   name: ['firewalld', 'firewall-config']
+   state: latest
+  notify:
+     - restart firewall
+  tags:
+     - firewall_pkg

@@ -1,0 +1,13 @@
+---
+- hosts: prod
+  tasks:
+ 
+- name: RedHat linux patching on prod servers........#######..........
+  hosts: prod
+  user: ansi-adm
+  become: yes
+  become_user: root
+  gather_facts: yes
+  tasks:
+  roles:
+    - rhel-prod

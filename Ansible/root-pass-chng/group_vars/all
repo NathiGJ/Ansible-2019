@@ -1,0 +1,21 @@
+---
+items:
+   - prod1
+   - prod2
+   - dbprod
+   - fileserver
+   - devqa
+
+#pass1: $6$rounds=656000$PUEF2V5S1v28MJw2$KXsMiMbVEq10eLyoYoEAExY2VljM81CTGS.N6hhtG.doIcc/Zt6o1XGhf.IPwApojv5CsZT1k7UNeavGBwSSo0
+#pass0: $6$rounds=656000$pCoRumFadJRzQsMn$l.H4VOCPpwUJwkAZhC1GfgnY271ggbZItqBfZAWQ8YDSIjvlOd8N679WufBaIiQG6WS.NR79FArVLKGMsa1lv0
+#pass3: $6$rounds=656000$vs0WJ6B2wzpQzj4m$CcGEGozjx7dADPI0AJe1emsrQYOaTM4qX1.yySbbANdwsDDBtvd6h8DRqeb1blsYyFJwJ2suiVhv9Go3wsPX8/
+#pass4: $6$rounds=656000$O3hAVTTdaMhJsODt$kfGJWqxl3r4qT80Rx1tPTzNhOrRVGqwvBdLU8A1B/DNzsic7aXyrHtKRJl7bkIdN5v4uaJcyuYk/.OyDwZ56p0
+#pass5: $6$rounds=656000$QC4QF3f/IWdxYQLp$3IgEcdMAsKzLhYqeep8tKvNALhUEdPAR1E6IYF8ttwx./np8zQRn/P5t4h3/2ZESK0zC7IbXqksWBLi4DZ8g11
+
+pass: 
+  - $6$rounds=656000$PUEF2V5S1v28MJw2$KXsMiMbVEq10eLyoYoEAExY2VljM81CTGS.N6hhtG.doIcc/Zt6o1XGhf.IPwApojv5CsZT1k7UNeavGBwSSo0
+  - $6$rounds=656000$pCoRumFadJRzQsMn$l.H4VOCPpwUJwkAZhC1GfgnY271ggbZItqBfZAWQ8YDSIjvlOd8N679WufBaIiQG6WS.NR79FArVLKGMsa1lv0
+  - $6$rounds=656000$vs0WJ6B2wzpQzj4m$CcGEGozjx7dADPI0AJe1emsrQYOaTM4qX1.yySbbANdwsDDBtvd6h8DRqeb1blsYyFJwJ2suiVhv9Go3wsPX8/
+  - $6$rounds=656000$O3hAVTTdaMhJsODt$kfGJWqxl3r4qT80Rx1tPTzNhOrRVGqwvBdLU8A1B/DNzsic7aXyrHtKRJl7bkIdN5v4uaJcyuYk/.OyDwZ56p0
+  - $6$rounds=656000$QC4QF3f/IWdxYQLp$3IgEcdMAsKzLhYqeep8tKvNALhUEdPAR1E6IYF8ttwx./np8zQRn/P5t4h3/2ZESK0zC7IbXqksWBLi4DZ8g11
+   
