@@ -1,0 +1,8 @@
+---
+
+- name: Password change for all RHEL servers
+  hosts: 
+  user:
+    name: root
+    update_password: always
+    password: "{{ pass1 }}"

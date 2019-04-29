@@ -1,0 +1,29 @@
+---
+- name: Any modification is done on file or not using stat
+  shell: var1=`stat /testing-dir/default-file1 | grep -i size| awk '{print $2}'`;var2=8;if [ $var2 != $var1 ]; then echo "filehaschanged";else echo "fileisstable"; fi 
+  ignore_errors: yes
+  register: file_chk
+- debug:
+    msg: "file check status is {{ file_chk.stdout }}" 
+
+- name: Replace the original file to modified file
+  template:
+       src: /testing-dir/default-file1
+       dest: /testing-dir/default-file1
+  when: file_chk.stdout  == "filehaschanged" and ansible_distribution == 'RedHat'
+
+- name: Ensure the file has default vaule
+  shell: var1=`stat /testing-dir/default-file1 | grep -i size| awk '{print $2}'`;var2=8;if [ $var2 != $var1 ]; then echo "file is not ok";else echo "file is ok"; fi
+  ignore_errors: yes
+  register: file_chk_done
+- debug: 
+    msg: status of file is "{{ file_chk_done.stdout }}"
+
+- name: Email the status of modified file
+  mail:
+    host: localhost
+    port: 25
+    subject: Ansible-file-change-status
+    body: 'status - default-file-1 -  "{{ file_chk_done.stdout }}" on  {{ inventory_hostname }}'
+    to: nathee.nash@gmail.com
+  when: file_chk.stdout  == "filehaschanged" and ansible_distribution == 'RedHat'

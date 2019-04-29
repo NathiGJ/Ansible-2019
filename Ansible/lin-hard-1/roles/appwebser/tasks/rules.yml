@@ -1,0 +1,7 @@
+---
+
+- name: firewalld rules-port opening
+  shell: firewall-cmd --zone=public --add-port=123/tcp --permanent
+
+  notify:
+     - reload firewall

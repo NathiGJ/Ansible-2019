@@ -1,0 +1,28 @@
+---
+- hosts: all
+  connection: ssh
+  gather_facts: yes
+  tasks:
+
+- name: apply systemconf config
+  hosts: all
+  remote_user: ansi-adm
+  become: yes
+  become_user: root
+  tasks:
+  
+
+  roles:
+    - systemconf
+
+
+- name: apply appwebser config
+  hosts: db
+  remote_user: ansi-adm
+  become: yes
+  become_user: root
+  tasks:
+
+  roles:
+    - appwebser
+

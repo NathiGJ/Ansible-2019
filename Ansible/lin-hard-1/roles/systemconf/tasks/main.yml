@@ -1,0 +1,5 @@
+
+- import_tasks: epel-release.yml
+- import_tasks: install_nrpe_ntp.yml
+- import_tasks: config_nrpe_ntp.yml
+- import_tasks: service_nrpe_ntp.yml

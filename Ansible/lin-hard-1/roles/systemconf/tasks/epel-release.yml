@@ -1,0 +1,9 @@
+---
+
+- name: download epel repo
+  yum_repository: 
+     name: epel
+     description: EPEL YUM repo
+     baseurl: http://dl.fedoraproject.org/pub/epel/7/x86_64/
+     gpgcheck: no
+

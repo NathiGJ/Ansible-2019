@@ -1,0 +1,45 @@
+---
+
+- name: application/database service check to ensure running or stopped state
+  shell: if ps -ef | grep httpd|grep -v grep > /dev/null; then echo "service_running"; else echo "service_not_running";fi
+  ignore_errors: yes
+  register: service_check
+
+- name: Play will stop if application/database is still running.
+  fail: 
+    msg: "{{ inventory_hostname }} has running application or database service. Please stop to begin patching."
+  when: service_check.stdout  == "service_running"
+
+- name: update Security packages on prod server, only if app/db service has been stopped
+  yum:
+   name: '*'
+   security: yes
+   state: latest
+  when: service_check.stdout  == "service_not_running" and ansible_distribution == 'RedHat'
+  register: patch_update 
+
+- name:  kernel status check
+  shell: NEWKER=$(rpm -q --last kernel| head -1| awk '{print $1}'|sed 's/kernel-//'); OLDKER=$(uname -r); if [[ $NEWKER != $OLDKER ]]; then echo "reboot_true"; else echo "reboot_false"; fi
+  ignore_errors: yes
+  register: reboot_yes
+  
+- name: Initating server reboot only if kernel updated
+  command: shutdown -r -t 30
+  async: 0
+  poll: 0
+  when: reboot_yes.stdout  == "reboot_true"
+  register: rebooting_server
+
+- name: This state is to wait for few mins/sec for the system to come up after reboot
+  pause:
+    seconds: 120
+
+- name: Checking the SSH connectivity after reboot from Ansible-master#####################
+  local_action:
+     module: wait_for
+     port: 22
+     delay: 25
+     timeout: 120
+     state: started
+  when: rebooting_server is changed
+  

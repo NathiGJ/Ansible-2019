@@ -1,0 +1,21 @@
+---
+
+- name: Configuring nrpe.conf
+  template: 
+     src: nrpe.cfg
+     dest: /etc/nagios/nrpe.cfg
+     backup: yes
+  notify: 
+     - restart nrpe
+
+- name: Configuring ntp.conf
+  template:
+     src: ntp.conf
+     dest: /etc/ntp.conf
+     backup: yes
+  notify:
+     - restart ntpd
+
+
+
+
