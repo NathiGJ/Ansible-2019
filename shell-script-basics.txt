@@ -1,0 +1,9 @@
+ 
+$0 is the name of the shell or script
+$1 is the first argument, 
+$2 the second, 
+$3 the third, and so forth.
+$! is the PID of the most recent background command
+$# The number of arguments supplied to a script.
+$* All the arguments are double quoted. If a script receives two arguments, $* is equivalent to $1 $2.
+$$ The process number of the current shell. For shell scripts, this is the process ID under which they are executing.
