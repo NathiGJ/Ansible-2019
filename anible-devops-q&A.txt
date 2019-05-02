@@ -1,0 +1,45 @@
+What is the way to access shell environment variables in Ansible?
+
+In Ansible, if you want to access existing variables, the user needs to use the ‘env’ lookup plugin. 
+Example, to access the value of the Office environment on the management machine
+
+Explain modules in ansible
+
+Modules in Ansible are idempotent. From a RESTful service standpoint, for the operation to be idempotent, clients can perform the same result by using modules in Ansible. Multiple identical requests become a single request.
+
+There are two different types of modules in Ansible:
+
+Core modules
+Extras modules
+Core Modules
+
+The Ansible team maintains these types of modules, and they will always ship with Ansible software. They will also give higher priority for all requests than those in the “extras” repos.
+
+Extras Modules:
+
+These modules currently is bundled with Ansible but might available separately in the future. They are also mostly maintained by the Ansible community. These modules are still usable, but it can receive a lower rate of response to issues and pull requests.
+
+
+How can you disable Cowsay?
+If Cowsay is installed then executing your playbooks within Ansible is very smooth.
+Even if you think that you want to work in a professional cow free environment, then you will have two options:
+1.  Uninstall cowsay
+2. Setting up value for the environment variable, like below
+
+Export ANSIBLE_NOCOWS=1
+
+Q: How can you access a list of Ansible_Variables?
+By default, Ansible gathers facts under machines under management. Further, these facts are accessed in Playbooks and in templates. One of the best ways to view a list of all the facts that are available in a machine, then you need to run the setup module in the ad-hoc way:
+
+Ansible- m setup hostname
+
+Once this statement is executed, it will print out a dictionary of all the facts that are available for that particular host. This is the best way to access the list of Ansible_variables
+
+
+How can you see all the inventory variables that are defined in the host?
+The best way to see all the inventory variables is by executing this command below:
+
+Ansible - m debug- a “var=hostvars[‘hostname’]” localhost
+
+
+https://www.softwaretestinghelp.com/ansible-roles-jenkins-integration-ec2-modules/
